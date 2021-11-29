@@ -13,12 +13,14 @@ fun main() {
         list.add(input?.toIntOrNull())
     }
 
-    for (i in list.indices)
+    for (i in list.indices) {
         if (list[i] == null) {
-            for (j in (i + 2)..i - 2)
-                if (j != -1 && j != i) temp += list[j]!!
+            for (j in (i - 2)..i + 2)
+                if (j >= 0 && j < list.size && j != i)
+                    temp += list[j]!!
             list[i] = ceil(temp.toDouble() / 4).toInt()
-        } else sum += list[i]!!
-
+        }
+        sum += list[i]!!
+    }
     println(ceil(sum.toDouble() / list.size))
 }
